@@ -23,6 +23,6 @@ class Discussion extends Model
     }
 
     public function replies(){
-        return $this->belongsTo('App\Reply');
+        return $this->hasMany('App\Reply');
     }
 }
