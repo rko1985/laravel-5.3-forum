@@ -59,8 +59,6 @@ Route::group(['middleware' => 'auth'], function(){
         'as' => 'discussion.store'
     ]);
 
-
-
     Route::post('/discussion/reply/{id}',[
         'uses' => 'DiscussionsController@reply',
         'as' => 'discussion.reply'

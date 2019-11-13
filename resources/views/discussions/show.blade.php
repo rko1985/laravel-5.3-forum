@@ -17,9 +17,10 @@
             </p>
         </div>
         <div class="panel-footer">
-            <p>
+            <span>
                 {{ $d->replies->count() }} Replies
-            </p>
+            </span>
+            <a href="{{ route('channel', ['slug' => $d->channel->slug]) }}" class="pull-right btn btn-default btn-xs"> {{$d->channel->title }}</a>
         </div>
     </div>
 
@@ -48,18 +49,24 @@
 
     <div class="panel panel-default">
         <div class="panel-body">
-            <form action="{{ route('discussion.reply', ['id' => $d->id]) }}" method="post">
-                {{ csrf_field() }}
-                <div class="form-group">
-                    <label for="reply">Leave a reply...</label>
-                    <textarea name="reply" id="reply" cols="30" rows="10" class="form-control"></textarea>
-                </div>
-                <div class="form-group">
-                    <div class="text-center">
-                        <button class="btn pull-right">Leave a reply</button>
+            @if(Auth::check())
+                <form action="{{ route('discussion.reply', ['id' => $d->id]) }}" method="post">
+                    {{ csrf_field() }}
+                    <div class="form-group">
+                        <label for="reply">Leave a reply...</label>
+                        <textarea name="reply" id="reply" cols="30" rows="10" class="form-control"></textarea>
                     </div>
+                    <div class="form-group">
+                        <div class="text-center">
+                            <button class="btn pull-right">Leave a reply</button>
+                        </div>
+                    </div>
+                </form>
+            @else
+                <div class="text-center">
+                    <h2>Sign in to a leave a reply</h2>
                 </div>
-            </form>
+            @endif
         </div>
     </div>
     
