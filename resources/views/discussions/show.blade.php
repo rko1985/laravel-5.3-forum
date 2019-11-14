@@ -13,6 +13,10 @@
                 <span class="btn btn-danger btn-xs pull-right">open</span>
             @endif
 
+            @if(Auth::id() == $d->user->id)
+                <a href="{{ route('discussion.edit', ['slug' => $d->slug]) }}" class="btn btn-info btn-xs pull-right" style="margin-right: 8px;">edit</a>
+            @endif
+
             @if($d->is_being_watched_by_auth_user())
                 <a href="{{ route('discussion.unwatch', ['id' => $d->id]) }}" class="btn btn-default btn-xs pull-right" style="margin-right: 8px;">unwatch</a>
             @else
