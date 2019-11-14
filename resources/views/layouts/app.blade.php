@@ -122,6 +122,20 @@
                     </div>
                 </div>
 
+                @if(Auth::check())
+                    @if(Auth::user()->admin)
+                        <div class="panel panel-default">                    
+                            <div class="panel-body">
+                                <ul class="list-group">                            
+                                    <li class="list-group-item">
+                                        <a href="/channels" style="text-decoration: none;">All channels</a>
+                                    </li>                               
+                                </ul>
+                            </div>
+                        </div>
+                    @endif
+                @endif
+
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         Channels
