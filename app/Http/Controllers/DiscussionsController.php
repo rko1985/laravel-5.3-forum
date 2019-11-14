@@ -71,7 +71,7 @@ class DiscussionsController extends Controller
 
         Notification::send($watchers, new \App\Notifications\NewReplyAdded($d));
 
-        Session::flash('success', 'success', 'Replied to discussion.');
+        Session::flash('success', 'Replied to discussion.');
 
         return redirect()->back();
     }
